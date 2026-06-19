@@ -1,16 +1,16 @@
-class Livro:
+class Livro:  # Define a classe que servirá como molde para os livros
     tit=""
     aut=""
     ano=""
     id=""
     st=""
  
-def novoitem(acervo):
+def novoitem(acervo): # Função para cadastrar uma nova obra no sistema
     ident=input("Identificador do livro: ")
  
-    duplicado = False
-    for item in acervo:
-        if item.id == ident:
+    duplicado = False  # Variável de controle para verificar se o ID já existe
+    for item in acervo: 
+        if item.id == ident: 
             duplicado=True
  
     if duplicado:
@@ -24,7 +24,8 @@ def novoitem(acervo):
         obj.st="disponível"
         acervo.append(obj)
         print("Obra registrada com sucesso!")
- 
+        
+# Função para buscar livros por identificador ou por autor
 def buscar(acervo):
     print("1 - Localizar por ID")
     print("2 - Localizar por Autor")
@@ -47,7 +48,8 @@ def buscar(acervo):
  
     if achou == False:
         print("Nenhum registro encontrado")
- 
+
+# Função para atualizar os dados de uma obra que já existe
 def editar(acervo):
     ident=input("ID da obra para atualizar: ")
     achou=False
@@ -61,7 +63,8 @@ def editar(acervo):
  
     if achou==False:
         print("Obra não localizada")
- 
+
+# Função para excluir uma obra definitivamente do sistema
 def excluir(acervo):
     ident=input("ID para remoção: ")
     pos =-1
@@ -74,7 +77,8 @@ def excluir(acervo):
         print("Registro removido do acervo.")
     else:
         print("Obra não localizada")
- 
+        
+# Função para listar as obras em ordem alfabética pelo título (Bubble Sort manual)
 def exibir(acervo):
     temp = []
     for item in acervo:
@@ -95,10 +99,11 @@ def exibir(acervo):
     print("===== LISTAGEM DE OBRAS (ordem alfabética) =====")
     for item in temp:
         print("Título:", item.tit, "- Lançamento:", item.ano)
- 
-def saida(acervo):
+
+# Função para registrar que um livro foi emprestado
+def saida(acervo): 
     ident=input("ID para empréstimo: ")
-    achou=False
+    achou=False # Variável para controle de busca
     for item in acervo:
         if item.id == ident:
             achou=True
@@ -110,7 +115,8 @@ def saida(acervo):
  
     if achou==False:
         print("Obra não localizada")
- 
+        
+ # Função para registrar que um livro foi devolvido à biblioteca
 def retorno(acervo):
     ident=input("ID para devolução: ")
     achou=False
@@ -122,7 +128,8 @@ def retorno(acervo):
  
     if achou == False:
         print("Obra não localizada")
- 
+        
+ # Função principal que organiza a execução do programa e o menu
 def principal():
     dados=[]
     ativo=True
